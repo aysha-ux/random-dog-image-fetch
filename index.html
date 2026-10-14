@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>dogs</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+    <div class="container my-5 text-center">
+        <h1 class="text-success test-center">Dog Images</h1>
+        <div class="my-4">
+            <img id="dogImage" width="400" height="400" class="rounded" style="object-fit:cover">
+        </div>
+
+        <button onclick="getDog()" class="btn btn-primary">Get New Dog</button>
+
+    </div>
+
+
+    <script>
+
+        async function getDog(){
+            try {
+                const response = await fetch("https://dog.ceo/api/breeds/image/random")
+                console.log(response);
+
+                const dogData = await response.json()
+                console.log(dogData);
+
+                dogImage.src = dogData.message
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+    </script>
+
+</body>
+</html>
